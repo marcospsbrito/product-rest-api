@@ -1,14 +1,12 @@
 package com.avenuecode.recruitment;
 
+import com.avenuecode.recruitment.entities.Product;
+import com.avenuecode.recruitment.service.ProductService;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.inject.Inject;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.xml.ws.Service;
 
 /**
  * Created by marcos on 2/5/18.
@@ -16,6 +14,9 @@ import javax.xml.ws.Service;
 @Component
 @Path("/product")
 public class ProductEndpoint {
+
+    @Inject
+    private ProductService productService;
 
     @GET
     public String message() {
@@ -26,7 +27,14 @@ public class ProductEndpoint {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     @Path("/{productId}")
     public Product getProduct(@PathParam("productId") Long productId){
-        return new Product(productId,"new product");
+        return new Product();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Product addProduct(Product product){
+        return productService.add(product);
     }
 
 }
