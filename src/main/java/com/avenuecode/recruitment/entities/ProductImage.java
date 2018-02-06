@@ -1,5 +1,8 @@
 package com.avenuecode.recruitment.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -13,15 +16,11 @@ public class ProductImage {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne
     private Product product;
 
     private String imageSrc;
-
-    public ProductImage(Product product, String imageSrc) {
-        this.product = product;
-        this.imageSrc = imageSrc;
-    }
 
     public Product getProduct() {
         return product;

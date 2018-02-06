@@ -1,6 +1,10 @@
 package com.avenuecode.recruitment.entities;
 
 
+import com.avenuecode.recruitment.views.ProductView;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,7 +13,7 @@ import java.util.List;
  */
 
 @Entity
-public class Product {
+public class Product implements ProductView{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,9 +24,11 @@ public class Product {
     @OneToMany(mappedBy = "product", targetEntity = ProductImage.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ProductImage> images;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "productParent", targetEntity = Product.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Product> subProducts;
 
+    @JsonBackReference
     @ManyToOne
     private Product productParent;
 

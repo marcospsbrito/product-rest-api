@@ -9,6 +9,9 @@ import java.util.List;
  */
 public interface ProductDAO {
     Product add(Product product);
-    List<Product> listAll();
-    List<Product> listAllEager();
+    List<Product> listAll(boolean listSubProducts, boolean listImages);
+    Product findById(Long productId, boolean loadSubProducts, boolean loadImages);
+    Product update(Product product);
+    void delete(Long productId);
+    List<Product> listAllSubProducts(Long productId, boolean loadSubProducts, boolean loadImages);
 }
