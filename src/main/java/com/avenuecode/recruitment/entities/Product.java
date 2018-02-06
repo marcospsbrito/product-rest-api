@@ -13,6 +13,7 @@ import java.util.List;
  */
 
 @Entity
+@Table(name = "product")
 public class Product implements ProductView{
 
     @Id
@@ -20,6 +21,8 @@ public class Product implements ProductView{
     private long id;
 
     private String name;
+
+    private String description;
 
     @OneToMany(mappedBy = "product", targetEntity = ProductImage.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ProductImage> images;
@@ -30,6 +33,7 @@ public class Product implements ProductView{
 
     @JsonBackReference
     @ManyToOne
+    @JoinColumn(name = "parent_product_fk")
     private Product productParent;
 
     public long getId() {
@@ -70,5 +74,13 @@ public class Product implements ProductView{
 
     public void setProductParent(Product productParent) {
         this.productParent = productParent;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

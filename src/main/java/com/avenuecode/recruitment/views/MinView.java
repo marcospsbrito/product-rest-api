@@ -6,10 +6,12 @@ public class MinView implements ProductView {
 
     private Long id;
     private String name;
+    private String description;
 
     public MinView(Product product) {
         this.id = product.getId();
         this.name = product.getName();
+        this.description = product.getDescription();
     }
 
     public Long getId() {
@@ -46,4 +48,12 @@ public class MinView implements ProductView {
         result = prime * result
                 + ((id == null) ? 0 : id.hashCode());
         return result;    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

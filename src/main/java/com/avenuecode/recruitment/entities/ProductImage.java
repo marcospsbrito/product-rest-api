@@ -1,6 +1,5 @@
 package com.avenuecode.recruitment.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -10,6 +9,7 @@ import javax.persistence.*;
  */
 
 @Entity
+@Table(name = "image")
 public class ProductImage {
 
     @Id
@@ -18,9 +18,10 @@ public class ProductImage {
 
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
-    private String imageSrc;
+    private String type;
 
     public Product getProduct() {
         return product;
@@ -30,12 +31,12 @@ public class ProductImage {
         this.product = product;
     }
 
-    public String getImageSrc() {
-        return imageSrc;
+    public String getType() {
+        return type;
     }
 
-    public void setImageSrc(String imageSrc) {
-        this.imageSrc = imageSrc;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Long getId() {

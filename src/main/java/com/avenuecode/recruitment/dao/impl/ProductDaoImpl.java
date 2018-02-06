@@ -93,6 +93,7 @@ public class ProductDaoImpl implements ProductDAO {
         }
         inicializarListas(productManaged);
         productManaged.setName(product.getName());
+        productManaged.setDescription(product.getDescription());
         productManaged.setSubProducts(product.getSubProducts());
         productManaged.setImages(product.getImages());
         em.merge(productManaged);

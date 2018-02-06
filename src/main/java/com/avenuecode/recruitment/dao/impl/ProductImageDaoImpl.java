@@ -58,7 +58,7 @@ public class ProductImageDaoImpl implements ProductImageDAO {
         if(productImageManaged == null){
             throw new NotFoundException("This productImage does not exist.");
         }
-        productImageManaged.setImageSrc(productImage.getImageSrc());
+        productImageManaged.setType(productImage.getType());
         productImageManaged.setProduct(productManaged);
         em.merge(productImageManaged);
         em.flush();
