@@ -34,3 +34,5 @@ I guess JUnit and @SpringBootTest could be part of this automation.
 The last days was very busy, and I did it in a single day, between work and other activities of my day. So, I was proud of the result that I achieved.
 
 I had a funny experience returning to program in Java, since I get the Scrum Master of my team, I almost spent my time with research, work-arounds and studying ways to brush up the process of development of my team.
+
+
